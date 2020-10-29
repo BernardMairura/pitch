@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import PitchForm,UpvoteForm,CommentForm
+from .forms import PitchForm,UpvoteForm,CommentForm,Downvote
 from ..models import User,Pitch,Upvote,Downvote
 from flask_login import login_required,current_user
 from .. import db
@@ -48,7 +48,7 @@ def new_pitch():
         
         
         return redirect(url_for('main.index'))
-    return render_template('pitches.html',form=form)
+    return render_template('pitch.html',form=form)
 
 
 

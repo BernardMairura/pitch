@@ -1,45 +1,43 @@
-{% include 'navbar.html'%}
-
-{% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'bootstrap/base.html' %}
 {% import 'macros.html' as macro %}
+{% block navbar %}
+{% include 'navbar.html'%}
+{% endblock %}
 
-{% block content %}
+  {% block content %}
+    <div class="container">
+      <h3 style="color: green;text-align: center">Pitch Categories</h3>
+      <br>
+      <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#product">Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#interview">Interview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pickupline">Pickupline</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#promotion">Promotion</a>
+        </li>
+      </ul>
 
-
-        
-        
-<div class="row">
-                <div class="card">
-                                <div class="card-body text-center">
-                                <h4><a>{{pitch.title}}</a></h4>
-                                  <h5 class="card-text text-center">{{pitch.description}}.</h5>
-                                </div>
-                </div>
-
-
-                <div class="container">
-                                <div class="row">
-                                        <div class="jumbotron">
-                                                {{wtf.quick_form(form)}}
-                                                {{simplemde.load}}
-                                        </div>
-                                </div>
-                        </div>
-                        
-<hr><hr>
-        <div class="container">
-                <div class="col-md-12">
-                        <h4 style="color: brown; text-align: center;text-underline-position: below">Comments</h4>
-                        {{ macro.displayComment(comment) }}
-
-                </div>
-                 
+      <div class="tab-content">
+        <div id="product" class="container tab-pane active"><br>
+          {{ macro.display(productpitch) }}
+          
+        </div>
+        <div id="interview" class="container tab-pane fade"><br>
+          {{ macro.display(interviewpitch) }}
+        </div>
+        <div id="pickupline" class="container tab-pane fade"><br>
+          {{ macro.display(pickuplines)}}
+        </div>
+        <div id="promotion" class="container tab-pane fade"><br>
+          {{ macro.display(promotionpitch) }}
         </div>
         
-</div>
-
-
-
-	
-{% endblock %}
+      </div>
+    </div>
+  {% endblock %}
